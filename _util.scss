@@ -1,0 +1,34 @@
+/// Slightly lighten a color
+@function tint($color, $percentage) {
+
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+//Reponsive image wrap apply on a outter image wrapper
+@mixin responsive-image-wrap() {
+  display: block;
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+//for extend
+%responsive-image-wrap{
+  display:block;
+img{max-width:100%;height:auto;display:block;}
+}
+
+/** Output text color with correct contrast depend on background color **/
+@function get-text-color($bg)
+  //Check lightness
+  @if lightness($bg) > lightness(#aaa) or $bg==transparent {
+    color: $color-black;
+  } @else {
+    color: $color-white;
+  }
